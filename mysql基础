@@ -133,7 +133,29 @@ delete语法：delete from 表 where 条件;
 truncate 语法：truncate table 表;
 	删除sp表中所有的数据
 	truncate table sp;
-	
+10.数据的查询
+	a.查询的分类
+		简单查询
+		多表查询
+		子查询
+		分组查询
+	b.简单查询
+		语法：select 列 from 表 where 条件;
+		查询表中指定列，指定行，指定行的列
+		查询goods表中所有商品名称
+		select gname from goods;
+		查询goods表中商品价格为2000的所有信息
+		select * from goods where price=2000;
+		查询goods表中商品价格为2000的所有商品名称
+		select gname from gods where price=2000;
+
+create table goods(
+       gname char(20),
+       price int,
+       ddate date
+);
+
+insert into goods values('gaga',100,'2019-01-01'),('gaga',2000,'2019-02-01'),('simida',2000,'2018-01-01
 
 
 

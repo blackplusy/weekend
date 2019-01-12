@@ -51,5 +51,74 @@
 			;D:\phpStudy\PHPTutorial\MySQL\bin
 			确定
 			重启cmd窗口生效
+5.mysql的基础命令
+	数据库分为2部分：数据库软件 数据库数据
+	常说的数据库是数据库数据
+	数据库是由表组成
+	表是由数据组成
+	show databases;  	查看当前有哪些数据库
+	select database();	查看当前数据库的名字
+	use mysql;          切换数据库为mysql
+	show tables;		查看数据库中有哪些表
+	select * from user; 查看user表中所有的数据
+6.mysql的表结构
+	a.mysql的数据类型
+		数字	  int               12345
+		字符	  char  varchar     'abc'  '1234'
+		日期   date             '2019-01-11'
+	b.mysql的表结构
+		语法：create table 表(
+				列名   数据类型，
+				列名   数据类型...
+		);
+		创建表格商品(sp),名称(name)字符类型，价格(price)数字类型
+		create table sp(
+			name char(20),
+			price int
+		);
+		补充：查看表结构(desc 表名;)
+		查看sp表表结构
+			desc sp;
+		补充：mysql的图形管理工具
+			 mysql workbench
+			 sqlyog (小海豚)
+			 dbeaver
+			 navicat
+	c.数据库中表的约束
+		主键		列中的数据必须是唯一，通过一个条件只能查询到一条数据，不能为空，每张表中只能有一个主键
+		唯一    列中的数据必须是唯一，通过一个条件只能查询到一条数据，做为主键约束的补充
+		非空		列中的数据不能为空
+		检查		列中的数据是否满足条件
+		外键(参考) 一张表中的数据来源于另外一张表中的数据
+		语法：
+		create table 表(
+			列  数据类型 primary key，
+			列  数据类型 unique,
+			列  数据类型 not null,
+			列  数据类型 check(检查条件)，
+			列  数据类型 refernces 被参考表(被参考列)
+		);
+
+7.数据的新增
+字符类型数据加单引号
+数字类型数据直接使用
+日期类型数据加单引号
+a.向表中指定列新增数据
+语法:insert into 表(列1，列2...) values（值1，值2....）;
+	向sp表中新增数据商品名称simida
+	insert into sp(name) values('simida');
+b.向表中所有列新增数据
+语法：insert into 表 values(值1，值2...);
+	向sp表中新增数据名称为o8ma,价格300
+	insert into sp values('o8ma',300);
+	
+
+
+
+
+
+
+
+
 
 

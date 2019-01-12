@@ -134,6 +134,13 @@ truncate 语法：truncate table 表;
 	删除sp表中所有的数据
 	truncate table sp;
 10.数据的查询
+create table goods(
+       gname char(20),
+       price int,
+       ddate date
+);
+
+insert into goods values('gaga',100,'2019-01-01'),('gaga',2000,'2019-02-01'),('simida',2000,'2018-01-01);
 	a.查询的分类
 		简单查询
 		多表查询
@@ -148,14 +155,71 @@ truncate 语法：truncate table 表;
 		select * from goods where price=2000;
 		查询goods表中商品价格为2000的所有商品名称
 		select gname from gods where price=2000;
+	c.where条件
+		比较
+			>
+			<
+			=
+			>=
+			<=
+			!=
+			<>
+		查询ecs_goods表中本店售价高于2000的所有商品信息
+		注意：*代表所有列
+		select * from ecs_goods where shop_price>2000;
+		查询ecs_goods表中商品名称不是KD876的所有信息
+		select * from ecs_goods where goods_name<>'KD876';
+		关系
+			and	同时满足
+			or  满足一个条件即可
+			not 不满足条件
+		查询ecs_goods表中本店售价低于2000并且高于1000的所有信息
+		select * from ecs_goods where shop_price<2000 and shop_price>1000;
+		查询ecs_goods表中商品名称是KD876的或者诺基亚的所有信息
+		select * from ecs_goods where goods_name='KD876' or goods_name='诺基亚';
+		区间
+			between...and...
+			包括两个端点
+		查询ecs_goods表中本店售价范围在800和1999之间的所有信息
+		select * from ecs_goods where shop_price>=800 and shop_price<=1999;
+		select * from ecs_goods where shop_price between 800 and 1999;
+		模糊查询
+			当信息不完整使用，通常和字符类型一起使用
+			like
+			_		一个字符
+			%		任意个字符
+		查询ecs_goods表中商品名称以诺基亚开头的所有信息
+		select * from ecs_goods where goods_name like '诺基亚%';
+		查询ecs_goods表中商品名称以6结尾的所有信息
+		select * from ecs_goods where goods_name like '%6';
+		查询ecs_goods表中商品名称是6个字符的所有信息
+		select * from ecs_goods where goods_name like '______';
+		空值查询
+			空是没有任何数据类型，没有任何值，不能用于比较和运算
+			查询时候使用is null或者is not null
+		查询ecs_goods表中suppliers_id为空的所有信息
+		select * from ecs_goods where suppliers_is is null;
+		in
+			在...里面，或的关系
+		查询ecs_goods表中商品名称是KD876的或者诺基亚的所有信息
+		select * from ecs_goods where goods_name in('KD876','诺基亚');
+		补充：
+		select * from ecs_goods where goods_name like '诺基亚%' and shop_price between 1000 and 2000;
+		
 
-create table goods(
-       gname char(20),
-       price int,
-       ddate date
-);
 
-insert into goods values('gaga',100,'2019-01-01'),('gaga',2000,'2019-02-01'),('simida',2000,'2018-01-01
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

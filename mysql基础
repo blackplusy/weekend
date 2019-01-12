@@ -249,10 +249,72 @@ insert into goods values('gaga',100,'2019-01-01'),('gaga',2000,'2019-02-01'),('s
 		select g.goods_name,c.cat_id from ecs_goods g,ecs_category c
 		where g.cat_id=c.cat_id
 		and c.cat_name='3G手机';
+==================================================================
+子查询
+一条SQL语句的执行依赖于另外一条SQL语句的执行结果,数据新增、修改、删除都可以使用
+查询商品名称是KD876的分类名称
+1.分析列和表
+	商品名称    ecs_gooods
+	分类名称    ecs_category
+2.分析关联
+	cat_id
+a.查询ecs_goods表中满足条件的cat_id
+	select cat_id from ecs_goods where goods_name='KD876';
+b.查询ecs_category表中cat_id为上面查询出来结果的分类名称	
+	select cat_name from ecs_category where cat_id=(select cat_id from ecs_goods where goods_name='KD876');
+注意：子查询分为单行子查询、多行子查询
+	查询出来结果是1行，可以使用等号和in
+	查询出来结果是多行，可以用in
+
+查询商品本店价格在2000和3000之间的商品分类名称
+a.查询ecs_goods表中满足条件的cat_id
+select cat_id from ecs_goods where shop_price between 2000 and 3000;
+b.查询ecs_category表中cat_id为上面查询出来结果的分类名称
+select cat_name from ecs_category where cat_id=(select cat_id from ecs_goods where shop_price between 2000 and 3000);
+
+2.jpg
+3.insert into achievement values((select id from student where name='Robert'),80);
+4.update achievement set mark=87 where id=(select id from student where name='Rose');
+5.
+delete from achievement where id=(select id from student where name='Betty');
+delete from student where name='Betty';
+
+排序和分页查询
+排序：
+	顺序       从小到大 
+		order by 列
+		order by 列 asc
+	逆序、倒序  从大到小
+		order by 列 desc
+	语法：select 列 from 表
+			where 条件
+				order by 列;
+	查询ecs_goods表中所有数据，按照本店售价顺序排列
+		select * from ecs_goods order by shop_price;
+	查询ecs_goods表中所有数据，按照cat_id从大到小进行排列
+		select * from ecs_goods order by cat_id desc;
+分页查询：
+	limit 后跟的第一个参数是获取第几行
+	如果有第二个参数是步长
+	查询ecs_goods表中前5行数据
+	select * from ecs_goods limit 5;
+	查询ecs_goods表中5到10行数据
+	select * from ecs_goods limit 5,10;
+	注意：limit和排序在一块时候，排序一定要作为子查询
+	select * from (select * from ecs_goods order by cat_id desc) limit 5;
 
 
-查询3G手机中价格介于1500和3000之间的商品名称有哪些？
-查询商品名称以诺基亚开头的商品对应的分类有哪些？
+
+
+
+
+
+
+
+
+
+
+
 
 
 

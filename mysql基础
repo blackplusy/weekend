@@ -1,0 +1,55 @@
+1.常见的数据库
+	关系型数据库
+		informix    军政运银
+		db2			军政运银
+		oracle 		中大型企业
+		mysql		互联网公司
+		sqlserver	传统
+	非关系型数据库
+		mongodb		大数据、爬虫
+		redis		缓存、消息队列
+		cassandra   同步速度快
+2.数据库安装
+	phpstudy
+	mysql的目录结构
+	bin		存放命令
+	data	存放数据
+	lib		存放库文件
+	my.ini  mysql的配置文件
+3.mysql的服务和端口
+	c ------/------s
+	mysql         mysqld
+				  端口3306
+	a.mysql的常见服务
+		mysql    mysql的客户端服务
+		mysqld   mysql的主服务
+	b.mysqld的服务和端口
+		mysqld的默认端口是3306
+		win+r--cmd--netstat -an | find "3306"
+			netstat -an  查看电脑中开放的所有端口
+			|			 管道，前面的输出做伪后面的输入
+			find		 搜索
+		查看mysqld的服务
+		win+r--cmd--tasklist | find "mysqld"
+			tasklist     任务列表
+4.mysql的登陆
+	a.登陆命令
+		mysql   
+			登陆本地test数据库
+		mysql -u root -p
+			管理员登陆本地数据库
+		mysql -h 127.0.0.1 -u root -p
+			管理员登陆IP为127.0.0.1的数据库
+	b.登陆方式
+		b1.进入到命令所在文件夹
+			win+r--cmd--
+			d:
+			cd phpStudy\PHPTutorial\MySQL\bin
+		b2.设置环境变量
+			计算机--属性--高级--环境变量--系统变量--Path中添加
+			mysql的命令所在路径
+			;D:\phpStudy\PHPTutorial\MySQL\bin
+			确定
+			重启cmd窗口生效
+
+
